@@ -27,22 +27,22 @@ public class ByteSourceTest {
         assertThat(readBytes, is(Files.toByteArray(f1)));
     }
 
-    @Test
-    public void createByteSourceFromByteArray() throws Exception {
-        byte[] bytes = new byte[]{0xF, 0xF, 0xF, 0x3, 0x3};
-        ByteSource byteSource = ByteStreams.asByteSource(bytes);
-        byte[] readBytes = byteSource.read();
-        assertThat(readBytes, is(bytes));
-    }
-
-    @Test
-    public void createByteSliceTest() throws Exception {
-        byte[] bytes = new byte[]{0xF, 0xF, 0xF, 0x3, 0x3, 0xA, 0xA, 0xA, 0xA, 0xA};
-        byte[] expectedSlice = new byte[]{0xA, 0xA, 0xA, 0xA, 0xA};
-        ByteSource byteSource = ByteStreams.asByteSource(bytes);
-        ByteSource slice = byteSource.slice(5, 10);
-        assertThat(slice.read(), is(expectedSlice));
-    }
+//    @Test
+//    public void createByteSourceFromByteArray() throws Exception {
+//        byte[] bytes = new byte[]{0xF, 0xF, 0xF, 0x3, 0x3};
+//        ByteSource byteSource = ByteStreams.asByteSource(bytes);
+//        byte[] readBytes = byteSource.read();
+//        assertThat(readBytes, is(bytes));
+//    }
+//
+//    @Test
+//    public void createByteSliceTest() throws Exception {
+//        byte[] bytes = new byte[]{0xF, 0xF, 0xF, 0x3, 0x3, 0xA, 0xA, 0xA, 0xA, 0xA};
+//        byte[] expectedSlice = new byte[]{0xA, 0xA, 0xA, 0xA, 0xA};
+//        ByteSource byteSource = ByteStreams.asByteSource(bytes);
+//        ByteSource slice = byteSource.slice(5, 10);
+//        assertThat(slice.read(), is(expectedSlice));
+//    }
 
     @Test
     public void copyToByteSinkTest() throws Exception {

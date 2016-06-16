@@ -3,6 +3,8 @@ package bbejeck.guava.chapter9.hashing;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
+import java.nio.charset.Charset;
+
 /**
  * User: Bill Bejeck
  * Date: 5/8/13
@@ -22,14 +24,15 @@ public class HashingExamples {
         HashFunction sha512 = Hashing.sha512();
 
         String testString = "FooBarBaz";
-        System.out.println("adler32 hash " + adler32.hashString(testString).toString());
-        System.out.println("crc32 hash " + crc32.hashString(testString).toString());
-        System.out.println("gfh hash "+ gfh.hashString(testString).toString());
-        System.out.println("murmur3_32 hash " + murmur3_32.hashString(testString).toString());
-        System.out.println("murmur3_128 hash " + murmur3_128.hashString(testString).toString());
-        System.out.println("Sha1 hash " + sha1.hashString(testString).toString());
-        System.out.println("Sha256 hash " + sha256.hashString(testString).toString());
-        System.out.println("Sha512 hash " + sha512.hashString(testString).toString());
+        Charset charset = Charset.defaultCharset();
+        System.out.println("adler32 hash " + adler32.hashString(testString, charset).toString());
+        System.out.println("crc32 hash " + crc32.hashString(testString, charset).toString());
+        System.out.println("gfh hash "+ gfh.hashString(testString, charset).toString());
+        System.out.println("murmur3_32 hash " + murmur3_32.hashString(testString, charset).toString());
+        System.out.println("murmur3_128 hash " + murmur3_128.hashString(testString, charset).toString());
+        System.out.println("Sha1 hash " + sha1.hashString(testString, charset).toString());
+        System.out.println("Sha256 hash " + sha256.hashString(testString, charset).toString());
+        System.out.println("Sha512 hash " + sha512.hashString(testString, charset).toString());
     }
 
 }

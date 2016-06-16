@@ -6,6 +6,8 @@ import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 
+import java.nio.charset.Charset;
+
 /**
  * User: Bill Bejeck
  * Date: 5/11/13
@@ -18,13 +20,14 @@ public class HasherExamples {
         HashFunction murmur3_128 = Hashing.murmur3_128();
         Hasher murmurHasher = murmur3_128.newHasher();
         City city = new City.Builder().build();
-        HashCode hashCode = murmurHasher.putString(city.getName())
+        Charset charset = Charset.defaultCharset();
+        HashCode hashCode = murmurHasher.putString(city.getName(), charset)
                                         .putDouble(city.getAverageRainfall()).hash();
         System.out.println(hashCode);
 
         HashFunction sha256 = Hashing.sha256();
         Hasher sha256Hasher = sha256.newHasher();
-         hashCode = sha256Hasher.putString(city.getName())
+         hashCode = sha256Hasher.putString(city.getName(), charset)
                 .putDouble(city.getAverageRainfall()).hash();
         System.out.println(hashCode);
     }
