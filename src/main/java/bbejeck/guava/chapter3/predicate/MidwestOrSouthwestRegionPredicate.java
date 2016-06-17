@@ -3,6 +3,7 @@ package bbejeck.guava.chapter3.predicate;
 import bbejeck.guava.common.model.Region;
 import bbejeck.guava.common.model.State;
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableList;
 
 /**
  * User: Bill Bejeck
@@ -13,7 +14,8 @@ public class MidwestOrSouthwestRegionPredicate implements Predicate<State> {
 
     @Override
     public boolean apply(State input) {
-        return input.getRegion().equals(Region.MIDWEST) ||
-               input.getRegion().equals(Region.SOUTHWEST);
+        ImmutableList<Region> midwestAndSouthwest =
+                ImmutableList.of(Region.MIDWEST, Region.SOUTHWEST);
+        return midwestAndSouthwest.contains(input.getRegion());
     }
 }

@@ -40,12 +40,13 @@ public class FluentIterablesTest {
 
     @Test
     public void testFilter() throws Exception {
-        Iterable<Person> personsFilteredByAge = FluentIterable.from(personList).filter(new Predicate<Person>() {
-            @Override
-            public boolean apply(Person input) {
-                return input.getAge() > 31;
-            }
-        });
+        Iterable<Person> personsFilteredByAge = FluentIterable.from(personList)
+                .filter(new Predicate<Person>() {
+                    @Override
+                    public boolean apply(Person input) {
+                        return input.getAge() > 31;
+                    }
+                });
 
         assertThat(Iterables.contains(personsFilteredByAge, person2), is(true));
         assertThat(Iterables.contains(personsFilteredByAge, person4), is(true));
@@ -55,26 +56,26 @@ public class FluentIterablesTest {
 
     @Test
     public void testAnyMatch() throws Exception {
-        Predicate<Person> personOlderThan31Predicate =  new Predicate<Person>() {
+        Predicate<Person> personOlderThan31Predicate = new Predicate<Person>() {
             @Override
             public boolean apply(Person input) {
                 return input.getAge() > 31;
             }
         };
 
-        assertThat(FluentIterable.from(personList).anyMatch(personOlderThan31Predicate),is(true));
+        assertThat(FluentIterable.from(personList).anyMatch(personOlderThan31Predicate), is(true));
     }
 
     @Test
     public void testAllMatch() throws Exception {
-        Predicate<Person> personOlderThan25Predicate =  new Predicate<Person>() {
+        Predicate<Person> personOlderThan25Predicate = new Predicate<Person>() {
             @Override
             public boolean apply(Person input) {
                 return input.getAge() > 25;
             }
         };
 
-        assertThat(FluentIterable.from(personList).allMatch(personOlderThan25Predicate),is(true));
+        assertThat(FluentIterable.from(personList).allMatch(personOlderThan25Predicate), is(true));
     }
 
 
